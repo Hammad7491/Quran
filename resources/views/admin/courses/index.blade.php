@@ -53,49 +53,25 @@
                             <th>Course Name</th>
                             <th>Price</th>
                             <th>Classes per Week</th>
-                            <th>Course Image</th>
+                           
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($courses as $course)
                         <tr>
-                            <td>Web Development</td>
-                            <td>$200</td>
-                            <td>5 days</td>
+                            <td>{{ $course->name }}</td>
+                            <td>{{ $course->price }}</td>
+                            <td>{{ $course->schedule }}</td>
+                            
                             <td>
-                                <img src="https://via.placeholder.com/50" alt="Course Image" width="50">
+                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </td>
+                        </tr>
+                    @endforeach
 
-                            <td>
-                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Graphic Design</td>
-                            <td>$150</td>
-                            <td>4 days</td>
-                            <td>
-                                <img src="https://via.placeholder.com/50" alt="Course Image" width="50">
-                            </td>
-
-                            <td>
-                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Data Science</td>
-                            <td>$250</td>
-                            <td>6 days</td>
-                            <td>
-                                <img src="https://via.placeholder.com/50" alt="Course Image" width="50">
-                            </td>
-                            <td>
-                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
-                            </td>
-                        </tr>
+                          
                     </tbody>
                 </table>
             </div><!-- end card-body -->

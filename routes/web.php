@@ -52,3 +52,8 @@ Route::get('/students', [StudentController::class, 'index'])->name('admin.studen
 
 Route::get('/teachers', [TeacherController::class, 'index'])->name('admin.teacher.index');
 
+Route::get('/students', [StudentController::class, 'index'])->name('admin.student.index');
+
+Route::get('/courses', [CourseController::class, 'index'])->name('admin.courses.index');
+
+

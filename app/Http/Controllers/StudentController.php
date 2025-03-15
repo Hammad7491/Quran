@@ -17,6 +17,10 @@ class StudentController extends Controller
     {
         // Fetch all users where role is 'student'
         $students = User::where('role', 'student')->get();
+
+        $students = Student::with(['teacher', 'course'])->get();
+
+        return view('admin.student.index', compact('students'));
         
         // Pass the students data to the view
         return view('admin.student.index', compact('students'));

@@ -28,7 +28,7 @@
 
                         <div class="card-body">
                             <form class="row g-3 needs-validation" novalidate action="{{ route("student.store") }}" method="POST" enctype="multipart/form-data">
-
+@csrf
                                 <!-- Name -->
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Name</label>
@@ -54,10 +54,10 @@
                                 <div class="col-md-6">
                                     <label for="teacher" class="form-label">Select Teacher</label>
                                     <select class="form-select" name="teacher_id" id="teacher" required>
-                                        <option selected disabled value="">Choose...</option>
-                                        <option value="1">John Doe</option>
-                                        <option value="2">Emily Johnson</option>
-                                        <option value="3">Michael Brown</option>
+                                        <option value="">-- Select Teacher --</option>
+                @foreach($teachers as $teacher)
+                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
+                @endforeach
                                     </select>
                                     <div class="invalid-feedback">Please select a teacher.</div>
                                 </div>
@@ -66,10 +66,10 @@
                                 <div class="col-md-6">
                                     <label for="course" class="form-label">Select Course</label>
                                     <select class="form-select" name="course_id" id="course" required>
-                                        <option selected disabled value="">Choose...</option>
-                                        <option value="1">Web Development</option>
-                                        <option value="2">Data Science</option>
-                                        <option value="3">Graphic Design</option>
+                                        <option value="">-- Select Course --</option>
+                                        @foreach($courses as $course)
+                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="invalid-feedback">Please select a course.</div>
                                 </div>

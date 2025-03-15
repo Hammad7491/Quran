@@ -40,5 +40,11 @@ class CourseController extends Controller
 
         return redirect()->back()->with('success', 'Course added successfully!');
     }
+
+    public function index()
+    {
+        $courses = Course::all(); // Fetch all courses
+        return view('admin.courses.index', compact('courses'));
+    }
     
 }

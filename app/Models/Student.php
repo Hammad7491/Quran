@@ -9,18 +9,21 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','student_id', 'teacher_id', 'course_id'];
+    protected $fillable = [ 'user_id', 'teacher_id', 'course_id'];
 
-    public function student()
+    // Relationship with User (if students are users)
+    public function user()
     {
-        return $this->belongsTo(User::class, 'student_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
+    // Relationship with Teacher (assuming teachers are also stored in the users table)
     public function teacher()
     {
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
+    // Relationship with Course
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id');

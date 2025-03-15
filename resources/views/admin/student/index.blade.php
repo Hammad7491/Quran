@@ -42,11 +42,12 @@
                             <table id="datatable" class="table table-bordered dt-responsive nowrap">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Name</th>
+                                        <th>ID </th>
+                                        <th>Student Name</th>
                                         <th>Email</th>
                                         <th>Assigned Teacher</th>
                                         <th>Assigned Course</th>
-                                        <th>Actions</th>
+                                        <th>Course Fee</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -54,9 +55,15 @@
                                     @foreach($students as $student)
                                     <tr>
                                         <td>{{ $student->id }}</td>
-                                        <td>{{ $student->name }}</td>
-                                        <td>{{ $student->email }}</td>
-                                        <td>{{ $student->created_at }}</td>
+                                        
+                                        <td>{{ $student->user ? $student->user->name : 'N/A' }}</td>
+                                        
+                                       
+                                        <td>{{ $student->user ? $student->user->email : 'N/A' }}</td>
+
+                                        <td>{{ $student->teacher ? $student->teacher->name : 'N/A' }}</td>
+                                        <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
+                                        <td>{{ $student->course ? $student->course->price : 'N/A' }}</td>
                                         <td>
                                             <button class="btn btn-sm btn-primary">
                                                 <i class="fas fa-edit"></i>

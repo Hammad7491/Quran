@@ -37,10 +37,10 @@
                     <div class="collapse" id="sidebarCourses">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('admin.dashboard') }}" class="tp-link">Add Course</a>
+                                <a href="{{ route('course.create') }}" class="tp-link">Add Course</a>
                             </li>
                             <li>
-                                <a href="." class="tp-link">List Course</a>
+                                <a href="{{ route('admin.courses.index') }}" class="tp-link">List Course</a>
                             </li>
                         </ul>
                     </div>
