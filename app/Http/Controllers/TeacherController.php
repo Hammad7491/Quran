@@ -27,29 +27,29 @@ class TeacherController extends Controller
 
     public function store(Request $request)
     {
-        // Validate form data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required',
-            'status' => 'required|in:1,0',
-        ]);
-
-        // Insert into users table
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password), // Encrypt password
-            'role' => 'teacher', // Default role to 'teacher'
-            'status' => $request->status,
-        ]);
-
-
-
-
-        return redirect()->back()->with('success', 'User added successfully.');
+        try {
+            // Validate form data
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|unique:users',
+                'password' => 'required',
+            ]);
+    
+            // Insert into users table
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password), // Encrypt password
+                'role' => 'teacher', // Default role to 'teacher'
+                'status' => 1,
+            ]);
+    
+            return redirect()->route('admin.teacher.index')->with('success', 'User added successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to add user: ' . $e->getMessage());
+        }
     }
-
+    
 
 
 

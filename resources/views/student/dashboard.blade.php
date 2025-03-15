@@ -1,26 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+@extends('student.layouts.app')
 
-<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-</head>
-<body>
+@section('title', 'Student Dashboard')
 
-@include('student.layouts.header')
+@section('links')
+    <!-- App Favicon -->
+    <link rel="shortcut icon" href="{{ asset('assetss/images/favicon.ico') }}">
 
-    @yield("content")
+    <!-- App CSS -->
+    <link href="{{ asset('assetss/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
+    <!-- Icons -->
+    <link href="{{ asset('assetss/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 
+@section('content')
+<div class="content-page">
+    <div class="content">
 
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+                <div class="flex-grow-1">
+                    <h4 class="fs-18 fw-semibold m-0">Student Dashboard</h4>
+                </div>
+            </div>
+</div>
+@endsection
 
+@section('scripts')
+    <!-- Vendor Scripts -->
+    <script src="{{ asset('assetss/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assetss/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assetss/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assetss/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ asset('assetss/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('assetss/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ asset('assetss/libs/feather-icons/feather.min.js') }}"></script>
 
+    <!-- ApexCharts JS -->
+    <script src="{{ asset('assetss/libs/apexcharts/apexcharts.min.js') }}"></script>
 
+    <!-- External Script (Unchanged) -->
+    <script src="https://apexcharts.com/samples/assets/stock-prices.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+    <!-- Widgets Init JS -->
+    <script src="{{ asset('assetss/js/pages/crm-dashboard.init.js') }}"></script>
+
+    <!-- App JS -->
+    <script src="{{ asset('assetss/js/app.js') }}"></script>
+@endsection
