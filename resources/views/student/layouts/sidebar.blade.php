@@ -37,13 +37,13 @@
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="index.html" class="tp-link">CRM</a>
+                                <a href="index.html" class="tp-link">Book</a>
                             </li>
                             <li>
-                                <a href="analytics.html" class="tp-link">Analytics</a>
+                                <a href="analytics.html" class="tp-link">History</a>
                             </li>
                             <li>
-                                <a href="ecommerce.html" class="tp-link">eCommerce</a>
+                                <a href="ecommerce.html" class="tp-link">Class</a>
                             </li>
                         </ul>
                     </div>

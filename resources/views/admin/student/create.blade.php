@@ -9,84 +9,104 @@
 @endsection
 
 @section('content')
-<div class="content-page">
-    <div class="content">
-        <div class="container-fluid">
-            <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
-                <div class="flex-grow-1">
-                    <h4 class="fs-18 fw-semibold m-0">Admin Dashboard</h4>
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+                    <div class="flex-grow-1">
+                        <h4 class="fs-18 fw-semibold m-0">Admin Dashboard</h4>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Add User Form -->
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="card shadow-sm">
-                        <div class="card-header text-center text-black">
-                            <h5 class="mb-0">Add Student</h5>
-                        </div>
+                <!-- Add User Form -->
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card shadow-sm">
+                            <div class="card-header text-center text-black">
+                                <h5 class="mb-0">Add Student</h5>
+                            </div>
 
-                        <div class="card-body">
-                            <form class="row g-3 needs-validation" novalidate action="{{ route("admin.student.store") }}" method="POST" enctype="multipart/form-data">
-@csrf
+                            <div class="card-body">
+                                <form class="row g-3 needs-validation" novalidate
+                                action="{{ isset($student->id) ? route('admin.student.update', $student->id) : route('admin.student.store') }}"
+                                method="POST" enctype="multipart/form-data">
+                            
+                                @csrf
+                                @if(isset($student))
+                                    @method('PUT')
+                                @endif
+                            
                                 <!-- Name -->
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Enter Name" value="{{ old('name', $student->user->name ?? '') }}" required>
                                     <div class="invalid-feedback">Please enter a name.</div>
                                 </div>
-
+                            
                                 <!-- Email -->
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="Enter Email" value="{{ old('email', $student->user->email ?? '') }}" required>
                                     <div class="invalid-feedback">Please enter a valid email.</div>
                                 </div>
-
-                                <!-- Password -->
-                                <div class="col-md-6">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter Password" required>
-                                    <div class="invalid-feedback">Please enter a password.</div>
-                                </div>
-
+                            
+                                <!-- Password (Only for Create) -->
+                                @if(!isset($student))
+                                    <div class="col-md-6">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" name="password" id="password"
+                                            placeholder="Enter Password" required>
+                                        <div class="invalid-feedback">Please enter a password.</div>
+                                    </div>
+                                @endif
+                            
                                 <!-- Select Teacher -->
                                 <div class="col-md-6">
                                     <label for="teacher" class="form-label">Select Teacher</label>
                                     <select class="form-select" name="teacher_id" id="teacher" required>
                                         <option value="">-- Select Teacher --</option>
-                @foreach($teachers as $teacher)
-                    <option value="{{ $teacher->id }}">{{ $teacher->name }}</option>
-                @endforeach
+                                        @foreach ($teachers as $teacher)
+                                            <option value="{{ $teacher->id }}" {{ isset($student) && $student->teacher_id == $teacher->id ? 'selected' : '' }}>
+                                                {{ $teacher->name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                     <div class="invalid-feedback">Please select a teacher.</div>
                                 </div>
-
+                            
                                 <!-- Select Course -->
                                 <div class="col-md-6">
                                     <label for="course" class="form-label">Select Course</label>
                                     <select class="form-select" name="course_id" id="course" required>
                                         <option value="">-- Select Course --</option>
-                                        @foreach($courses as $course)
-                                            <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                        @foreach ($courses as $course)
+                                            <option value="{{ $course->id }}" {{ isset($student) && $student->course_id == $course->id ? 'selected' : '' }}>
+                                                {{ $course->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">Please select a course.</div>
                                 </div>
-
+                            
                                 <!-- Submit Button -->
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100" type="submit">Submit</button>
+                                    <button class="btn btn-primary w-100" type="submit">
+                                        {{ isset($student) ? 'Update' : 'Submit' }}
+                                    </button>
                                 </div>
-
+                            
                             </form>
-                        </div>
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
-            </div> <!-- end row -->
+                            
+
+                            </div>
+                        </div> <!-- end card-->
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+            </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('scripts')

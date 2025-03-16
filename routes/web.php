@@ -64,11 +64,13 @@ Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('cour
 
 
 // Student Routes
-Route::get('/students/{id?}', [StudentController::class, 'index'])->name('admin.student.index');
-Route::post('/students', [StudentController::class, 'store'])->name('admin.student.store');
-Route::post('/students/edit/{id?}', [StudentController::class, 'edit'])->name('admin.student.edit');
-Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('student.delete');
+Route::get('/students/create', [StudentController::class, 'create'])->name('admin.student.create');
+Route::get('/students/index', [StudentController::class, 'index'])->name('admin.student.index');
+Route::post('/students/store', [StudentController::class, 'store'])->name('admin.student.store');
+Route::get('/students/edit/{id?}', [StudentController::class, 'edit'])->name('admin.student.edit');
+Route::delete('/students/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
 
+Route::put('/admin/student/update/{id}', [StudentController::class, 'update'])->name('admin.student.update');
 
 
 

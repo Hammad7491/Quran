@@ -49,6 +49,7 @@
                             <th>Assigned Teacher</th>
                             <th>Assigned Course</th>
                             <th>Course Fee</th>
+                            <th>Role</th>
                             <th>Actions</th>
                         </tr> 
                     </thead>
@@ -61,6 +62,7 @@
                             <td>{{ $student->teacher ? $student->teacher->name : 'N/A' }}</td>
                             <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
                             <td>{{ $student->course ? $student->course->price : 'N/A' }}</td>
+                            <td>{{ $student->role ? $student->users->role : 'N/A' }}</td>
                             <td>
                                 <!-- Edit Button (Redirects to Edit Form on the Same Page) -->
                                 <a href="{{ route('admin.student.edit', $student->id) }}" class="btn btn-sm btn-primary">

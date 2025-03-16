@@ -40,17 +40,23 @@ public function update(Request $request, $id)
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $teacher->id,
-        'password' => 'required',
+        'password' => 'nullable|min:8', // Allow password to be optional
     ]);
 
-    $teacher->update([
+    $data = [
         'name' => $request->name,
         'email' => $request->email,
-        'password' => $request->password,
-    ]);
+    ];
+
+    if ($request->filled('password')) {
+        $data['password'] = bcrypt($request->password); // Hash the password
+    }
+
+    $teacher->update($data);
 
     return redirect()->route('admin.teacher.index')->with('success', 'Teacher updated successfully.');
 }
+
 
 
 

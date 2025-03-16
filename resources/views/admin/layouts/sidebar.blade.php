@@ -85,7 +85,7 @@
                     <div class="collapse" id="sidebarStudents">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('admin.student.index', ['action' => 'create']) }}" class="btn btn-primary mb-3">Add Student</a>
+                                <a href="{{ route('admin.student.create') }}" class="btn btn-primary mb-3">Add Student</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.student.index' )}}" class="btn btn-primary mb-3">List Student</a>
