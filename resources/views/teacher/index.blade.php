@@ -43,9 +43,9 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th>Name</th>
-                                        <th>Assigned Teacher</th>
                                         <th>Assigned Course</th>
                                         <th>Timing</th>
+                                        <th>Days</th>
                                         <th>History</th>
                                     </tr>
                                 </thead>
@@ -53,9 +53,9 @@
                                     <!-- Sample Data (Replace with dynamic data from the backend) -->
                                     <tr>
                                         <td>Alex Johnson</td>
-                                        <td>John Doe</td>
                                         <td>Web Development</td>
                                         <td>03:00-05:00 PM</td>
+                                        <td>7</td>
                                         <td>
                                             <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Manage History">
                                                 <i class="fas fa-cogs"></i> Manage history
@@ -66,9 +66,9 @@
                                     </tr>
                                     <tr>
                                         <td>Sophia Miller</td>
-                                        <td>Emily Johnson</td>
                                         <td>Data Science</td>
                                         <td>03:00-05:00 PM</td>
+                                        <td>4</td>
                                         <td>
                                             <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Manage History">
                                                 <i class="fas fa-cogs"></i> Manage history
@@ -77,9 +77,9 @@
                                     </tr>
                                     <tr>
                                         <td>Michael Brown</td>
-                                        <td>Michael Brown</td>
                                         <td>Graphic Design</td>
                                         <td>03:00-05:00 PM</td>
+                                        <td>3</td>
                                         <td>
                                             <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Manage History">
                                                 <i class="fas fa-cogs"></i> Manage history

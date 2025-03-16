@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form class="row g-3 needs-validation" novalidate action="{{ route("student.store") }}" method="POST" enctype="multipart/form-data">
+                            <form class="row g-3 needs-validation" novalidate action="{{ route("admin.student.store") }}" method="POST" enctype="multipart/form-data">
 @csrf
                                 <!-- Name -->
                                 <div class="col-md-6">

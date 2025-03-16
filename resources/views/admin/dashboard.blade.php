@@ -24,6 +24,8 @@
                     <h4 class="fs-18 fw-semibold m-0">Admin Dashboard</h4>
                 </div>
             </div>
+        </div>
+</div>
 </div>
 @endsection
 

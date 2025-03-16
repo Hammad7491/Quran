@@ -28,13 +28,20 @@
                 </div>
 
                 <div class="card-body">
-                    <form class="row g-3 needs-validation" novalidate action="{{ route('teacher.store') }}" method="POST">
+                    <form class="row g-3 needs-validation" novalidate
+                        action="{{ isset($teacher->id) ? route('admin.teacher.update', $teacher->id) : route('admin.teacher.store') }}"
+                        method="POST">
+
                         @csrf
+                        @if (isset($teacher->id))
+                            @method('PUT')
+                        @endif
+
                         <!-- Name -->
                         <div class="col-md-12">
                             <label for="name" class="form-label">Full Name</label>
                             <input type="text" class="form-control" name="name" id="name"
-                                placeholder="Enter Full Name" required>
+                                placeholder="Enter Full Name" value="{{ old('name', $teacher->name ?? '') }}" required>
                             <div class="invalid-feedback">Please enter your full name.</div>
                         </div>
 
@@ -42,11 +49,11 @@
                         <div class="col-md-12">
                             <label for="email" class="form-label">Email Address</label>
                             <input type="email" class="form-control" name="email" id="email"
-                                placeholder="Enter Email" required>
+                                placeholder="Enter Email" value="{{ old('email', $teacher->email ?? '') }}" required>
                             <div class="invalid-feedback">Please enter a valid email address.</div>
                         </div>
 
-                        <!-- Password -->
+                        <!-- Password (Only show in Create mode) -->
                         <div class="col-md-12">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" class="form-control" name="password" id="password"
@@ -54,14 +61,15 @@
                             <div class="invalid-feedback">Please enter a password.</div>
                         </div>
 
-
-
                         <!-- Submit Button -->
                         <div class="col-12">
-                            <button class="btn btn-primary w-100" type="submit">Submit</button>
+                            <button class="btn btn-primary w-100" type="submit">
+                                {{ isset($teacher->id) ? 'Update' : 'Create' }}
+                            </button>
                         </div>
 
                     </form>
+
                 </div> <!-- end card-body -->
             </div> <!-- end card-->
         </div> <!-- end col -->

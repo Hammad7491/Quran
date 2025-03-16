@@ -24,6 +24,35 @@ class TeacherController extends Controller
     }
 
 
+    
+public function edit($id)
+{
+    $teacher = User::findOrFail($id); // Fetch existing teacher for editing
+    return view('admin.teacher.create', compact('teacher'));
+}
+
+
+
+public function update(Request $request, $id)
+{
+    $teacher = User::findOrFail($id);
+
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,' . $teacher->id,
+        'password' => 'required',
+    ]);
+
+    $teacher->update([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => $request->password,
+    ]);
+
+    return redirect()->route('admin.teacher.index')->with('success', 'Teacher updated successfully.');
+}
+
+
 
     public function store(Request $request)
     {

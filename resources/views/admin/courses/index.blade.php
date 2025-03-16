@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'ListCourses')
+@section('title', 'CoursesList')
 
 @section('links')
    <!-- App favicon -->
@@ -27,14 +27,7 @@
 <div class="content-page">
     <div class="content">
 
-        <!-- Start Content-->
-        <div class="container-fluid">
-            <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
-                <div class="flex-grow-1">
-                    <h4 class="fs-18 fw-semibold m-0">Admin Dashboard</h4>
-                </div>
-            </div>
-</div>
+
 
 
  <!-- Datatables  -->
@@ -43,7 +36,7 @@
         <div class="card shadow-sm">
 
             <div class="card-header">
-                <h5 class="card-title mb-0">List Courses</h5>
+                <h5 class="card-title mb-0">Courses List</h5>
             </div><!-- end card header -->
 
             <div class="card-body">
@@ -53,7 +46,6 @@
                             <th>Course Name</th>
                             <th>Price</th>
                             <th>Classes per Week</th>
-                           
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -63,17 +55,27 @@
                             <td>{{ $course->name }}</td>
                             <td>{{ $course->price }}</td>
                             <td>{{ $course->schedule }}</td>
-                            
                             <td>
-                                <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <!-- Edit Button (Redirects to Edit Form on the Same Page) -->
+                                <a href="{{ route('course.edit', $course->id) }}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                
+                                <!-- Delete Button with Confirmation -->
+                                <form action="{{ route('course.delete', $course->id) }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this course?');">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
-                    @endforeach
-
-                          
+                        @endforeach
                     </tbody>
                 </table>
+                
+                
             </div><!-- end card-body -->
 
         </div><!-- end card -->

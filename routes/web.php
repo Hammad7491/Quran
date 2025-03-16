@@ -36,24 +36,51 @@ Route::get('/student/dashboard', function () {
 
 
 
-Route::get('/teacher', [TeacherController::class, 'create'])->name('teacher.create');
+Route::get('/teacher', [TeacherController::class, 'index'])->name('admin.teacher.index');
+Route::get('/teacher/create', [TeacherController::class, 'create'])->name('admin.teacher.create');
+Route::post('/teacher', [TeacherController::class, 'store'])->name('admin.teacher.store');
+Route::get('/teacher/{id}/edit', [TeacherController::class, 'edit'])->name('admin.teacher.edit');
+Route::delete('/teacher/{id}', [TeacherController::class, 'destroy'])->name('admin.teacher.delete');
 
-Route::post('/teacher', [TeacherController::class, 'store'])->name('teacher.store');
-
-Route::get('/student', [StudentController::class, 'create'])->name('student.create');
-Route::post('/student', [StudentController::class, 'store'])->name('student.store');
-
-
-Route::get('/course', [CourseController::class, 'create'])->name('course.create');
-Route::post('/course', [CourseController::class, 'store'])->name('course.store');
+Route::put('/teacher/{id}/update', [TeacherController::class, 'update'])->name('admin.teacher.update');
 
 
-Route::get('/students', [StudentController::class, 'index'])->name('admin.student.index');
 
-Route::get('/teachers', [TeacherController::class, 'index'])->name('admin.teacher.index');
 
-Route::get('/students', [StudentController::class, 'index'])->name('admin.student.index');
 
-Route::get('/courses', [CourseController::class, 'index'])->name('admin.courses.index');
+
+
+Route::get('/courses', [CourseController::class, 'index'])->name('admin.courses.index'); // List + Create/Edit Form
+Route::post('/courses', [CourseController::class, 'store'])->name('course.store'); // Store New Course
+Route::get('/courses/{id}', [CourseController::class, 'index'])->name('course.edit'); // Edit Course
+Route::put('/courses/{id}', [CourseController::class, 'update'])->name('course.update'); // Update Course
+Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('course.delete'); // Delete Course
+
+
+
+
+
+
+
+
+// Student Routes
+Route::get('/students/{id?}', [StudentController::class, 'index'])->name('admin.student.index');
+Route::post('/students', [StudentController::class, 'store'])->name('admin.student.store');
+Route::post('/students/edit/{id?}', [StudentController::class, 'edit'])->name('admin.student.edit');
+Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('student.delete');
+
+
+
+
+Route::get('/teacherdashboard', function () {
+    return view('teacher.index');
+})->name('checkstudentlist');
+
+
+
+
+
+
+
 
 

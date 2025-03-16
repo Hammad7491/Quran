@@ -26,7 +26,7 @@
             <ul id="side-menu">
 
 
-                <li class="menu-title">Dashboard</li>
+                <li class="menu-title">Admin Dashboard</li>
 
                 <li>
                     <a href="#sidebarCourses" data-bs-toggle="collapse">
@@ -37,13 +37,20 @@
                     <div class="collapse" id="sidebarCourses">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('course.create') }}" class="tp-link">Add Course</a>
+                                <a href="{{ route('admin.courses.index', ['action' => 'create']) }}" 
+                                   class="tp-link">
+                                    Add Course
+                                </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.courses.index') }}" class="tp-link">List Course</a>
+                                <a href="{{ route('admin.courses.index') }}" 
+                                   class="tp-link">
+                                    List Courses
+                                </a>
                             </li>
                         </ul>
                     </div>
+                    
                 </li>
                 
                 <li>
@@ -53,14 +60,15 @@
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarTeachers">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="{{ route('teacher.create') }}" class="tp-link">Add Teacher</a>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.teacher.create', ['action' => 'create']) }}">Add Teacher</a>
                             </li>
-                            <li>
-                                <a href="{{ route('admin.teacher.index') }}" class="tp-link">List Teacher</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.teacher.index') }}">List Teachers</a>
                             </li>
                         </ul>
+                                            
                     </div>
                 </li>
 
@@ -77,10 +85,10 @@
                     <div class="collapse" id="sidebarStudents">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('student.create') }}" class="tp-link">Add Student</a>
+                                <a href="{{ route('admin.student.index', ['action' => 'create']) }}" class="btn btn-primary mb-3">Add Student</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.student.index') }}" class="tp-link">List Student</a>
+                                <a href="{{ route('admin.student.index' )}}" class="btn btn-primary mb-3">List Student</a>
                             </li>
                         </ul>
                     </div>
