@@ -28,77 +28,76 @@
                 </div>
 
                 <div class="card-body">
-                    <form class="row g-3 needs-validation" novalidate
-                        action="{{ isset($course) ? route('course.update', $course->id) : route('course.store') }}"
-                        method="POST" enctype="multipart/form-data">
-
-                        @csrf
-                        @if (isset($course))
-                            @method('PUT')
-                        @endif
-
-                        <!-- Course Name -->
-                        <div class="col-md-6">
-                            <label for="courseName" class="form-label">Course Name</label>
-                            <input type="text" class="form-control" name="name" id="courseName"
-                                placeholder="Enter Course Name" value="{{ old('name', $course->name ?? '') }}" required>
-                            <div class="invalid-feedback">Please enter a course name.</div>
-                        </div>
-
-                        <!-- Course Price -->
-                        <div class="col-md-6">
-                            <label for="coursePrice" class="form-label">Course Price</label>
-                            <input type="number" class="form-control" name="price" id="coursePrice"
-                                placeholder="Enter Course Price" value="{{ old('price', $course->price ?? '') }}" required>
-                            <div class="invalid-feedback">Please enter a valid price.</div>
-                        </div>
-
-                        <!-- Classes per Week -->
-                        <div class="col-md-6">
-                            <label for="classesPerWeek" class="form-label">Classes per Week</label>
-                            <select class="form-select" name="schedule" id="classesPerWeek" required>
-                                <option selected disabled value="">Choose...</option>
-                                @for ($i = 1; $i <= 7; $i++)
-                                    <option value="{{ $i }}"
-                                        {{ old('schedule', $course->schedule ?? '') == $i ? 'selected' : '' }}>
-                                        {{ $i }} time{{ $i > 1 ? 's' : '' }} a week
-                                    </option>
-                                @endfor
-                            </select>
-                            <div class="invalid-feedback">Please select the number of classes.</div>
-                        </div>
-
-                        <!-- Course Image Upload -->
-                        <div class="col-md-6">
-                            <label for="courseImage" class="form-label">Upload Course Image</label>
-                            <input type="file" class="form-control" id="courseImage" name="image" accept="image/*">
-                            @if (isset($course) && $course->image)
-                                <div class="mt-2">
-                                    <label>Current Image:</label>
-                                    <img src="{{ asset('storage/' . $course->image) }}" alt="Course Image" width="100"
-                                        class="img-thumbnail">
-                                </div>
-                            @endif
-                            <div class="invalid-feedback">Please upload a valid course image.</div>
-                        </div>
-
-                        <!-- Terms and Conditions -->
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
-                                <div class="invalid-feedback">You must agree before submitting.</div>
-                            </div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="col-12">
-                            <button class="btn btn-primary w-100" type="submit">
-                                {{ isset($course) ? 'Update Course' : 'Submit Form' }}
-                            </button>
-                        </div>
-
-                    </form>
+                    <form class="row g-3 needs-validation" novalidate 
+                    action="{{ isset($course) ? route('course.update', $course->id) : route('course.store') }}"
+                    method="POST" enctype="multipart/form-data">
+              
+                  @csrf
+                  @if(isset($course))
+                      @method('PUT')
+                  @endif
+              
+                  <!-- Course Name -->
+                  <div class="col-md-6">
+                      <label for="courseName" class="form-label">Course Name</label>
+                      <input type="text" class="form-control" name="name" id="courseName"
+                             placeholder="Enter Course Name" value="{{ old('name', $course->name ?? '') }}" required>
+                      <div class="invalid-feedback">Please enter a course name.</div>
+                  </div>
+              
+                  <!-- Course Price -->
+                  <div class="col-md-6">
+                      <label for="coursePrice" class="form-label">Course Price</label>
+                      <input type="number" class="form-control" name="price" id="coursePrice"
+                             placeholder="Enter Course Price" value="{{ old('price', $course->price ?? '') }}" required>
+                      <div class="invalid-feedback">Please enter a valid price.</div>
+                  </div>
+              
+                  <!-- Classes per Week -->
+                  <div class="col-md-6">
+                      <label for="classesPerWeek" class="form-label">Classes per Week</label>
+                      <select class="form-select" name="schedule" id="classesPerWeek" required>
+                          <option selected disabled value="">Choose...</option>
+                          @for ($i = 1; $i <= 7; $i++)
+                              <option value="{{ $i }}" {{ old('schedule', $course->schedule ?? '') == $i ? 'selected' : '' }}>
+                                  {{ $i }} time{{ $i > 1 ? 's' : '' }} a week
+                              </option>
+                          @endfor
+                      </select>
+                      <div class="invalid-feedback">Please select the number of classes.</div>
+                  </div>
+              
+                  <!-- Course Image Upload -->
+                  <div class="col-md-6">
+                      <label for="courseImage" class="form-label">Upload Course Image</label>
+                      <input type="file" class="form-control" id="courseImage" name="image" accept="image/*">
+                      @if(isset($course) && $course->image)
+                          <div class="mt-2">
+                              <label>Current Image:</label>
+                              <img src="{{ asset('storage/' . $course->image) }}" alt="Course Image" width="100" class="img-thumbnail">
+                          </div>
+                      @endif
+                      <div class="invalid-feedback">Please upload a valid course image.</div>
+                  </div>
+              
+                  <!-- Terms and Conditions -->
+                  <div class="col-12">
+                      <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="invalidCheck" required>
+                          <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                          <div class="invalid-feedback">You must agree before submitting.</div>
+                      </div>
+                  </div>
+              
+                  <!-- Submit Button -->
+                  <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">
+                          {{ isset($course) ? 'Update Course' : 'Create Course' }}
+                      </button>
+                  </div>
+              
+              </form>
+              
                 </div>
                 <!-- end card-body -->
             </div> <!-- end card-->

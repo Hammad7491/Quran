@@ -85,6 +85,15 @@ public function update(Request $request, $id)
         }
     }
     
+    public function destroy($id)
+{
+    $teacher = User::findOrFail($id); // Find the teacher
+
+    $teacher->delete(); // Delete the teacher record
+
+    return redirect()->route('admin.teacher.index')->with('success', 'Teacher deleted successfully.');
+}
+
 
 
 

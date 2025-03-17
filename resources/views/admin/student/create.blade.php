@@ -9,9 +9,8 @@
 @endsection
 
 @section('content')
-    <div class="content-page">
-        <div class="content">
-            <div class="container-fluid">
+
+            <div class="container-fluid ms-5">
                 <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
                     <div class="flex-grow-1">
                         <h4 class="fs-18 fw-semibold m-0">Admin Dashboard</h4>
@@ -23,7 +22,7 @@
                     <div class="col-md-8">
                         <div class="card shadow-sm">
                             <div class="card-header text-center text-black">
-                                <h5 class="mb-0">Add Student</h5>
+                                <h5 class="mb-0">{{ isset($student) ? 'Edit student' : 'Add student' }}</h5>
                             </div>
 
                             <div class="card-body">
@@ -52,15 +51,13 @@
                                     <div class="invalid-feedback">Please enter a valid email.</div>
                                 </div>
                             
-                                <!-- Password (Only for Create) -->
-                                @if(!isset($student))
+  
                                     <div class="col-md-6">
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" class="form-control" name="password" id="password"
                                             placeholder="Enter Password" required>
                                         <div class="invalid-feedback">Please enter a password.</div>
                                     </div>
-                                @endif
                             
                                 <!-- Select Teacher -->
                                 <div class="col-md-6">
@@ -89,6 +86,14 @@
                                     </select>
                                     <div class="invalid-feedback">Please select a course.</div>
                                 </div>
+
+
+                                <div class="col-md-6">
+                                    <label for="time" class="form-label">Select Time Range</label>
+                                    <input type="text" class="form-control" id="time" name="time"
+                                        placeholder="Enter Time " value="{{ old('time', $student->time ?? '') }}"                                    }}" required>
+                                    <div class="invalid-feedback">Please enter a name.</div>
+                                </div>
                             
                                 <!-- Submit Button -->
                                 <div class="col-12">
@@ -105,8 +110,7 @@
                     </div> <!-- end col -->
                 </div> <!-- end row -->
             </div>
-        </div>
-    </div>
+
 @endsection
 
 @section('scripts')

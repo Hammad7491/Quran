@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddStudent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -50,14 +51,15 @@ Route::put('/teacher/{id}/update', [TeacherController::class, 'update'])->name('
 
 
 
-Route::get('/courses', [CourseController::class, 'index'])->name('admin.courses.index'); // List + Create/Edit Form
-Route::post('/courses', [CourseController::class, 'store'])->name('course.store'); // Store New Course
-Route::get('/courses/{id}', [CourseController::class, 'index'])->name('course.edit'); // Edit Course
-Route::put('/courses/{id}', [CourseController::class, 'update'])->name('course.update'); // Update Course
-Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('course.delete'); // Delete Course
 
 
 
+Route::get('/courses/create', [CourseController::class, 'create'])->name('admin.courses.create'); // List + Create/Edit Form
+Route::get('/courses/index', [CourseController::class, 'index'])->name('admin.courses.index'); // List + Create/Edit Form
+Route::post('/courses/store', [CourseController::class, 'store'])->name('course.store'); // Store New Course
+Route::get('/courses/edit/{id}', [CourseController::class, 'edit'])->name('course.edit'); // Edit Course
+Route::put('/courses/update/{id}', [CourseController::class, 'update'])->name('course.update'); // Update Course
+Route::delete('/courses/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete'); // Delete Course
 
 
 
@@ -77,6 +79,21 @@ Route::put('/admin/student/update/{id}', [StudentController::class, 'update'])->
 Route::get('/teacherdashboard', function () {
     return view('teacher.index');
 })->name('checkstudentlist');
+
+
+
+
+
+
+
+
+Route::get('/admin/books/list', [BookController::class, 'index'])->name('admin.books.index');
+Route::get('/admin/books/create', [BookController::class, 'create'])->name('admin.books.create');
+Route::post('/admin/books/store', [BookController::class, 'store'])->name('admin.books.store');
+Route::get('/admin/books/{book}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
+Route::put('/admin/books/{book}', [BookController::class, 'update'])->name('admin.books.update');
+Route::delete('/admin/books/{book}', [BookController::class, 'destroy'])->name('admin.books.destroy');
+
 
 
 

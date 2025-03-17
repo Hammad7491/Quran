@@ -51,12 +51,15 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+      
+
         $request->validate([
             'name'       => 'required|string|max:255',
             'email'      => 'required|email|unique:users,email',
             'password'   => 'required|min:6',
             'teacher_id' => 'required|exists:users,id',
             'course_id'  => 'required|exists:courses,id',
+            'time'  => 'required|string',
         ]);
     
         $user = User::create([
@@ -64,12 +67,14 @@ class StudentController extends Controller
             'email'    => $request->email,
             'password' => Hash::make($request->password),
             'role'     => 'student',
+            
         ]);
     
         Student::create([
             'user_id'    => $user->id,
             'teacher_id' => $request->teacher_id,
             'course_id'  => $request->course_id,
+            'time'     => $request->time, 
         ]);
     
         return redirect()->route('admin.student.index')->with('success', 'Student registered successfully!');
@@ -85,6 +90,8 @@ class StudentController extends Controller
         'password'   => 'nullable|min:6',
         'teacher_id' => 'required|exists:users,id',
         'course_id'  => 'required|exists:courses,id',
+        'time'  => 'required|string',
+
     ]);
 
     $student = Student::findOrFail($id);
@@ -99,6 +106,7 @@ class StudentController extends Controller
     $student->update([
         'teacher_id' => $request->teacher_id,
         'course_id'  => $request->course_id,
+        'time'       => $request->time,
     ]);
 
     return redirect()->route('admin.student.index')->with('success', 'Student updated successfully!');

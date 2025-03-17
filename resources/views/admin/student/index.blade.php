@@ -40,15 +40,16 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
+                <table id="datatable" class="table table-bordered dt-responsive w-100">
                     <thead class="table-light">
                         <tr>
-                            <th>ID </th>
+                            <th>ID</th>
                             <th>Student Name</th>
                             <th>Email</th>
                             <th>Assigned Teacher</th>
                             <th>Assigned Course</th>
                             <th>Course Fee</th>
+                            <th>Time Range</th>
                             <th>Role</th>
                             <th>Actions</th>
                         </tr> 
@@ -62,14 +63,15 @@
                             <td>{{ $student->teacher ? $student->teacher->name : 'N/A' }}</td>
                             <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
                             <td>{{ $student->course ? $student->course->price : 'N/A' }}</td>
+                            <td>{{ $student->time }}</td>
                             <td>{{ $student->role ? $student->users->role : 'N/A' }}</td>
                             <td>
-                                <!-- Edit Button (Redirects to Edit Form on the Same Page) -->
+                                <!-- Edit Button -->
                                 <a href="{{ route('admin.student.edit', $student->id) }}" class="btn btn-sm btn-primary">
                                     <i class="fas fa-edit"></i>
                                 </a>
                         
-                                <!-- Delete Button with Confirmation -->
+                                <!-- Delete Button -->
                                 <form action="{{ route('student.delete', $student->id) }}" method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
@@ -80,12 +82,10 @@
                             </td>
                         </tr>
                         @endforeach
-                        
-                          
                     </tbody>
                 </table>
-            </div><!-- end card-body -->
-
+            </div> <!-- End of card-body -->
+            
         </div><!-- end card -->
     </div><!-- end col-12 -->
 </div><!-- end row -->

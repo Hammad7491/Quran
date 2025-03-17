@@ -40,41 +40,41 @@
             </div><!-- end card header -->
 
             <div class="card-body">
-                <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Course Name</th>
-                            <th>Price</th>
-                            <th>Classes per Week</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($courses as $course)
-                        <tr>
-                            <td>{{ $course->name }}</td>
-                            <td>{{ $course->price }}</td>
-                            <td>{{ $course->schedule }}</td>
-                            <td>
-                                <!-- Edit Button (Redirects to Edit Form on the Same Page) -->
-                                <a href="{{ route('course.edit', $course->id) }}" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                
-                                <!-- Delete Button with Confirmation -->
-                                <form action="{{ route('course.delete', $course->id) }}" method="POST" style="display: inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this course?');">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                
+            <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
+    <thead class="table-light">
+        <tr>
+            <th>Course Name</th>
+            <th>Price</th>
+            <th>Classes per Week</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($courses as $course)
+        <tr>
+            <td>{{ $course->name }}</td>
+            <td>{{ $course->price }}</td>
+            <td>{{ $course->schedule }}</td>
+            <td>
+                <!-- Edit Button (Redirects to Edit Form on the Same Page) -->
+                <a href="{{ route('course.edit', $course->id) }}" class="btn btn-sm btn-primary">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <!-- Delete Button with Confirmation -->
+                <form action="{{ route('course.delete', $course->id) }}" method="POST" style="display: inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this course?');">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
                 
             </div><!-- end card-body -->
 

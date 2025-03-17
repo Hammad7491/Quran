@@ -37,7 +37,7 @@
                     <div class="collapse" id="sidebarCourses">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('admin.courses.index', ['action' => 'create']) }}" 
+                                <a href="{{ route('admin.courses.create') }}" 
                                    class="tp-link">
                                     Add Course
                                 </a>
@@ -62,7 +62,7 @@
                     <div class="collapse" id="sidebarTeachers">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.teacher.create', ['action' => 'create']) }}">Add Teacher</a>
+                                <a class="nav-link" href="{{ route('admin.teacher.create')}}">Add Teacher</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.teacher.index') }}">List Teachers</a>
@@ -85,10 +85,33 @@
                     <div class="collapse" id="sidebarStudents">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('admin.student.create') }}" class="btn btn-primary mb-3">Add Student</a>
+                                <a href="{{ route('admin.student.create') }}" >Add Student</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.student.index' )}}" class="btn btn-primary mb-3">List Student</a>
+                                <a href="{{ route('admin.student.index' )}}" >List Student</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+
+
+
+
+                <li>
+                    <a href="#sidebarBooks" data-bs-toggle="collapse">
+                        <i class="fas fa-journal-whills text-primary"></i>
+                        <span> Books </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarBooks">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.books.create') }}" >Add New Book</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.books.index') }}" >List All Books</a>
                             </li>
                         </ul>
                     </div>
