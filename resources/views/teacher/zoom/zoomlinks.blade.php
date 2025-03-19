@@ -59,7 +59,7 @@
 
                         
 
-                        <div class="card-body">
+                        <div class="card-body ">
                                 
                                     <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                                         <thead>
@@ -111,16 +111,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="meetLinkForm">
+                <form id="meetLinkForm" action="{{ route('meet.link.store') }}" method="POST">
                     @csrf
                     <input type="hidden" id="userIdInput" name="user_id">
+                    
                     <label for="linkInput">Enter Link:</label>
                     <input type="text" id="linkInput" name="link" class="form-control" placeholder="Enter link here..." required>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Submit</button> <!-- Changed type to submit -->
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" id="submitMeetLink">Submit</button>
             </div>
         </div>
     </div>
@@ -133,27 +135,10 @@
             $('#userIdInput').val(userId); // Set user ID in hidden input
             $('#actionModal').modal('show'); // Show modal
         });
-
-        // Handle form submission via AJAX
-        $('#submitMeetLink').click(function() {
-            let formData = $('#meetLinkForm').serialize();
-
-            $.ajax({
-                url: "{{ route('meet.link.store') }}",
-                type: "POST",
-                data: formData,
-                success: function(response) {
-                    alert(response.success);
-                    $('#actionModal').modal('hide'); // Close modal
-                    $('#meetLinkForm')[0].reset(); // Reset form
-                },
-                error: function(xhr) {
-                    alert("Error: " + xhr.responseJSON.message);
-                }
-            });
-        });
     });
 </script>
+
+
 
 
         @endsection

@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->foreignId('course_id')->constrained('courses')->onDelete('cascade');
             $table->time('start_time')->nullable(); // Naya start_time column
             $table->time('end_time')->nullable(); // Naya end_time column            $table->timestamps();
+            $table->timestamps();
+
         });
     }
 

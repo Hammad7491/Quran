@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('meet_links', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('link');
+            $table->text('link');
             $table->timestamps();
 
             // Foreign key constraint (assuming 'users' table exists)
