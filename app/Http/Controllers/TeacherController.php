@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
+
+  
     public function create()
     {
         return view('admin.teacher.create'); 

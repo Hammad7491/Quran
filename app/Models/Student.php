@@ -9,7 +9,7 @@ class Student extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'user_id', 'teacher_id', 'course_id','time'];
+    protected $fillable = [ 'user_id', 'teacher_id', 'course_id','start_time','end_time'];
 
     // Relationship with User (if students are users)
     public function user()

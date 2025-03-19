@@ -58,6 +58,15 @@
                         <span> Todo List </span>
                     </a>
                 </li>
+
+
+                
+                <li>
+                    <a href="{{ route('student.zoom.meeting') }}" class="tp-link">
+                        <i data-feather="columns"></i>
+                        <span> Zoom Metting </span>
+                    </a>
+                </li>
                
             </ul>
 

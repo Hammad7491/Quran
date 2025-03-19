@@ -12,8 +12,7 @@ class StudentController extends Controller
 {
 
 
-
-
+   
         
     public function edit($id)
     {
@@ -59,7 +58,8 @@ class StudentController extends Controller
             'password'   => 'required|min:6',
             'teacher_id' => 'required|exists:users,id',
             'course_id'  => 'required|exists:courses,id',
-            'time'  => 'required|string',
+            'start_time'  => 'required',
+            'end_time'  => 'required',
         ]);
     
         $user = User::create([
@@ -74,7 +74,8 @@ class StudentController extends Controller
             'user_id'    => $user->id,
             'teacher_id' => $request->teacher_id,
             'course_id'  => $request->course_id,
-            'time'     => $request->time, 
+            'start_time'     => $request->start_time, 
+            'end_time'     => $request->end_time, 
         ]);
     
         return redirect()->route('admin.student.index')->with('success', 'Student registered successfully!');

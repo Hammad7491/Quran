@@ -44,6 +44,11 @@
                                 <a href="analytics.html" class="tp-link">History</a>
                             </li>
                         </ul>
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('teacher.zoom.zoomlinks') }}" class="tp-link">Zoom Link</a>
+                            </li>
+                        </ul>
                     </div>
                 </li>
                

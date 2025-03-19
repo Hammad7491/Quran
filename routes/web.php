@@ -8,6 +8,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\teacher\StudentsController;
+use App\Http\Controllers\MeetLinkController;
+use App\Http\Controllers\MeetingController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -92,11 +94,11 @@ Route::put('/admin/books/{book}', [BookController::class, 'update'])->name('admi
 Route::delete('/admin/books/{book}', [BookController::class, 'destroy'])->name('admin.books.destroy');
 
 
+Route::get('/teacher/zoom/zoomlinks', [StudentsController::class, 'zoomlink'])->name('teacher.zoom.zoomlinks');
 
 
 
+Route::post('/save-meet-link', [MeetLinkController::class, 'store'])->name('meet.link.store');
 
 
-
-
-
+Route::get('/meeting', [MeetingController::class, 'index'])->middleware('auth')->name('student.zoom.meeting');

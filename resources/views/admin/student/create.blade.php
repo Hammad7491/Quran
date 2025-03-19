@@ -88,10 +88,18 @@
                                 </div>
 
 
-                                <div class="col-md-6">
-                                    <label for="time" class="form-label">Select Time Range</label>
-                                    <input type="text" class="form-control" id="time" name="time"
-                                        placeholder="Enter Time " value="{{ old('time', $student->time ?? '') }}"                                    }}" required>
+                                <div class="col-md-3">
+                                    <label for="time" class="form-label">Start Time</label>
+                                    <input type="time" class="form-control" id="start_time" name="start_time"
+                                        placeholder="Enter Time " value="{{ old('start_time', $student->start_time ?? '') }}"                                    }}" required>
+                                    <div class="invalid-feedback">Please enter a name.</div>
+                                </div>
+
+
+                                <div class="col-md-3">
+                                    <label for="time" class="form-label">End Time</label>
+                                    <input type="time" class="form-control" id="end_time" name="end_time"
+                                        placeholder="Enter Time " value="{{ old('end_time', $student->end_time ?? '') }}"                                    }}" required>
                                     <div class="invalid-feedback">Please enter a name.</div>
                                 </div>
                             
@@ -114,6 +122,26 @@
 @endsection
 
 @section('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const startTimeInput = document.getElementById("start_time");
+        const endTimeInput = document.getElementById("end_time");
+
+        function validateTime() {
+            const startTime = startTimeInput.value;
+            const endTime = endTimeInput.value;
+
+            if (startTime && endTime && startTime >= endTime) {
+                alert("❌ Start Time must be less than End Time!");
+                endTimeInput.value = ""; // Reset End Time if invalid
+            }
+        }
+
+        startTimeInput.addEventListener("change", validateTime);
+        endTimeInput.addEventListener("change", validateTime);
+    });
+</script>
+
     <script src="{{ asset('assetss/libs/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assetss/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assetss/libs/simplebar/simplebar.min.js') }}"></script>
