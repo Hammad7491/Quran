@@ -25,7 +25,7 @@ class BookController extends Controller
         $request->validate([
             'course_id' => 'required|exists:courses,id',
             'title' => 'required|string|max:255',
-            'file' => 'required|mimes:pdf,doc,docx|max:2048',
+            'file' => 'required|max:2048',
         ]);
 
         if ($request->hasFile('file')) {
@@ -36,7 +36,7 @@ class BookController extends Controller
         Book::create([
             'course_id' => $request->course_id,
             'title' => $request->title,
-            'file' => $fileName ?? null,
+            'file_path' => $fileName ?? null,
         ]);
 
         return redirect()->route('admin.books.index')->with('success', 'Book added successfully.');
@@ -56,7 +56,7 @@ class BookController extends Controller
         $request->validate([
             'course_id' => 'required|exists:courses,id',
             'title' => 'required|string|max:255',
-            'file' => 'nullable|mimes:pdf,doc,docx|max:2048',
+            'file' => 'nullable|max:2048',
         ]);
     
         if ($request->hasFile('file')) {

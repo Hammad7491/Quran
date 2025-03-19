@@ -67,7 +67,7 @@
                       <div class="col-md-6">
                           <label for="bookFile" class="form-label">Upload Book File</label>
                           <input type="file" class="form-control" id="bookFile" name="file"
-                              accept=".pdf,.doc,.docx" {{ isset($book) ? '' : 'required' }}>
+                          {{ isset($book) ? '' : 'required' }}>
                           <div class="invalid-feedback">Please upload a valid book file.</div>
                           @if(isset($book) && $book->file)
                               <p class="mt-2">Current file: <a href="{{ asset('uploads/books/' . $book->file) }}" target="_blank">View File</a></p>

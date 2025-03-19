@@ -38,7 +38,7 @@
                     <div class="collapse" id="sidebarDashboards">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('checkstudentlist') }}" class="tp-link">Student List</a>
+                                <a href="{{ route('teacher.student.index') }}" class="tp-link">Student List</a>
                             </li>
                             <li>
                                 <a href="analytics.html" class="tp-link">History</a>

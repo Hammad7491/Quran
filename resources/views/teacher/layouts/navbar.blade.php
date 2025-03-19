@@ -159,8 +159,9 @@
                         <img src="{{ asset('assetss/images/users/user-5.jpg') }}" class="img-fluid rounded-circle" alt="User Image">
 
                         <span class="pro-user-name ms-1">
-                            John Smith <i class="mdi mdi-chevron-down"></i> 
+                            {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i> 
                         </span>
+                        
                     </a>
                     <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                         <!-- item-->

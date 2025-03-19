@@ -7,6 +7,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\teacher\StudentsController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -76,13 +77,9 @@ Route::put('/admin/student/update/{id}', [StudentController::class, 'update'])->
 
 
 
-Route::get('/teacherdashboard', function () {
-    return view('teacher.index');
-})->name('checkstudentlist');
 
 
-
-
+Route::get('/teacher/student/index', [StudentsController::class, 'index'])->name('teacher.student.index');
 
 
 
