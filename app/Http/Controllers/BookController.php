@@ -5,6 +5,8 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
+
 
 class BookController extends Controller
 {
@@ -14,6 +16,31 @@ class BookController extends Controller
         return view('admin.books.index', compact('books'));
     }
 
+    public function showbooks()
+{
+    $user = Auth::user();
+
+    if (!$user) {
+        return redirect()->route('login')->with('error', 'You are not logged in.');
+    }
+
+    // Check if the user has a student record
+    $student = $user->student;
+
+    if (!$student) {
+        return back()->with('error', 'Student profile not found.');
+    }
+
+    // Check if the student is enrolled in a course
+    if (!$student->course_id) {
+        return back()->with('error', 'Student is not enrolled in a course.');
+    }
+
+    // Fetch books for the student's course
+    $books = Book::where('course_id', $student->course_id)->get();
+
+    return view('student.books.index', compact('books'));
+}
     public function create()
     {
         $courses = Course::all();

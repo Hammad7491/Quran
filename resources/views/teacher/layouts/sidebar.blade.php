@@ -40,9 +40,6 @@
                             <li>
                                 <a href="{{ route('teacher.student.index') }}" class="tp-link">Student List</a>
                             </li>
-                            <li>
-                                <a href="analytics.html" class="tp-link">History</a>
-                            </li>
                         </ul>
                         <ul class="nav-second-level">
                             <li>
@@ -62,3 +59,5 @@
 
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

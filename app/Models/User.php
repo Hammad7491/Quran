@@ -43,6 +43,11 @@ class User extends Authenticatable
     {
         return self::where('role', 'teacher')->get();
     }
+
+    public function student()
+{
+    return $this->hasOne(Student::class);
+}
 }
 
 ?>

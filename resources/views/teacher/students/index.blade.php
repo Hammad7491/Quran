@@ -1,6 +1,6 @@
-@extends('teacher.layouts.app')
+@extends('student.layouts.app')
 
-@section('title', 'TeachersList')
+@section('title', 'BookList')
 
 @section('links')
     <!-- App favicon -->
@@ -61,8 +61,8 @@
                                             <td>{{ $student->name }}</td>
                                             <td>{{ $student->email }}</td>
                                             <td>
-                                                {{-- <a href="{{ route('students.show', $student->id) }}" class="btn btn-primary">View</a> --}}
-                                            </td>
+                                              <a href="{{ route('teacher.history.index', ['id' => $student->id]) }}" class="btn btn-primary">Manage History</a>
+
                                         </tr>
                                     @endforeach
                                 </tbody>

@@ -13,11 +13,14 @@ class Book extends Model
     protected $primaryKey = 'book_id'; // Set correct primary key
 
     public $incrementing = true; // Ensure auto-increment is enabled
-    protected $fillable = ['title', 'file_path', 'course_id'];
+    protected $fillable = ['title', 'author','file_path', 'file', 'size','course_id'];
 
     // Add this relationship
     public function course()
     {
         return $this->belongsTo(Course::class);
     }
+
+   
+    
 }

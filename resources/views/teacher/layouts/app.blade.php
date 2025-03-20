@@ -17,7 +17,14 @@
         @include('teacher.layouts.sidebar') 
     </div>
     
-    <main>
+    <main  class="container-fluid px-3>
+
+
+        <div class="row">
+            <div class="col-lg-6 col-md-8 col-sm-10 offset-lg-1 offset-md-1" style="margin-top: 5rem; margin-left: 18rem;">
+                @include('admin.layouts.alert')
+            </div>
+        </div>
         @yield('content') 
     </main>
    
