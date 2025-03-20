@@ -117,6 +117,47 @@
                     </div>
                 </li>
                 
+
+
+
+                <li>
+                    <a href="#sidebarFooter" data-bs-toggle="collapse" data-bs-parent="#sidebarMenu">
+                        <i class="fas fa-shoe-prints text-primary"></i> 
+                        <span> Footer </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarFooter">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.footer.create') }}">Add New Footer</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.footer.index') }}">List All Footer</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+
+
+
+                <li>
+                    <a href="#sidebarContact" data-bs-toggle="collapse" data-bs-parent="#sidebarMenu">
+                        <i class="fas fa-envelope text-success"></i>  
+                        <span> Contact Us </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarContact">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.contactus.create') }}">Add New Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.contactus.index') }}">List All Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 
 
 

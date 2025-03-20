@@ -128,5 +128,5 @@ Route::get('teacher/history/{id}/form/{historyId?}', [HistoryController::class, 
 
 
 
-Route::get('student/books', [BookController::class, 'showbooks'])->name('student.books.index');
+Route::get('student/books/', [BookController::class, 'showbooks'])->name('student.books.index');
 Route::get('student/books/index', [HistoryController::class, 'showhistory'])->name('student.history.index');
