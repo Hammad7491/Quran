@@ -63,7 +63,7 @@
                             <td>{{ $student->teacher ? $student->teacher->name : 'N/A' }}</td>
                             <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
                             <td>{{ $student->course ? $student->course->price : 'N/A' }}</td>
-                            <td>{{ $student->time }}</td>
+                            <td>{{ $student->start_time }} <strong>TO</strong> {{ $student->end_time }}</td>
                             <td>{{ $student->role ? $student->users->role : 'N/A' }}</td>
                             <td>
                                 <!-- Edit Button -->

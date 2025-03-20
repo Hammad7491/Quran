@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\teacher\StudentsController;
 use App\Http\Controllers\MeetLinkController;
-use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\teacher\StudentsController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -102,3 +103,30 @@ Route::post('/save-meet-link', [MeetLinkController::class, 'store'])->name('meet
 
 
 Route::get('/meeting', [MeetingController::class, 'index'])->middleware('auth')->name('student.zoom.meeting');
+
+
+
+
+
+
+
+
+// Show the history creation form
+Route::get('teacher/history/{id}/create', [HistoryController::class, 'create'])->name('teacher.history.create'); 
+Route::post('teacher/history/store', [HistoryController::class, 'store'])->name('teacher.history.store');
+
+Route::get('teacher/history/{id}', [HistoryController::class, 'index'])->name('teacher.history.index');
+
+Route::get('teacher/history/{id}/edit', [HistoryController::class, 'edit'])->name('teacher.history.edit');
+Route::put('teacher/history/{id}', [HistoryController::class, 'update'])->name('teacher.history.update');
+
+Route::delete('teacher/history/{id}', [HistoryController::class, 'destroy'])->name('teacher.history.destroy');
+
+Route::get('teacher/history/{id}/form/{historyId?}', [HistoryController::class, 'form'])->name('teacher.history.form');
+
+
+
+
+
+Route::get('student/books', [BookController::class, 'showbooks'])->name('student.books.index');
+Route::get('student/books/index', [HistoryController::class, 'showhistory'])->name('student.history.index');

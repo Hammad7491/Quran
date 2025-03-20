@@ -48,38 +48,37 @@ class StudentController extends Controller
         return view('admin.student.index', compact('students'));
     }
 
-    public function store(Request $request)
-    {
-      
+   // StudentController.php
 
-        $request->validate([
-            'name'       => 'required|string|max:255',
-            'email'      => 'required|email|unique:users,email',
-            'password'   => 'required|min:6',
-            'teacher_id' => 'required|exists:users,id',
-            'course_id'  => 'required|exists:courses,id',
-            'start_time'  => 'required',
-            'end_time'  => 'required',
-        ]);
-    
-        $user = User::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
-            'role'     => 'student',
-            
-        ]);
-    
-        Student::create([
-            'user_id'    => $user->id,
-            'teacher_id' => $request->teacher_id,
-            'course_id'  => $request->course_id,
-            'start_time'     => $request->start_time, 
-            'end_time'     => $request->end_time, 
-        ]);
-    
-        return redirect()->route('admin.student.index')->with('success', 'Student registered successfully!');
-    }
+public function store(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:6',
+        'teacher_id' => 'required|exists:users,id',
+        'course_id' => 'required|exists:courses,id', // Single course
+        'start_time' => 'required',
+        'end_time' => 'required',
+    ]);
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => 'student',
+    ]);
+
+    Student::create([
+        'user_id' => $user->id,
+        'teacher_id' => $request->teacher_id,
+        'course_id' => $request->course_id, // Direct assignment
+        'start_time' => $request->start_time,
+        'end_time' => $request->end_time,
+    ]);
+
+    return redirect()->route('admin.student.index')->with('success', 'Student registered!');
+}
 
     
 
