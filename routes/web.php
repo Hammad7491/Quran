@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\HistoryController;
-use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\MeetLinkController;
 use App\Http\Controllers\teacher\StudentsController;
+use App\Http\Controllers\MeetLinkController;
+use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\FooterController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -46,9 +47,8 @@ Route::get('/teacher/create', [TeacherController::class, 'create'])->name('admin
 Route::post('/teacher', [TeacherController::class, 'store'])->name('admin.teacher.store');
 Route::get('/teacher/{id}/edit', [TeacherController::class, 'edit'])->name('admin.teacher.edit');
 Route::delete('/teacher/{id}', [TeacherController::class, 'destroy'])->name('admin.teacher.delete');
-
 Route::put('/teacher/{id}/update', [TeacherController::class, 'update'])->name('admin.teacher.update');
-
+Route::get('/teacher/student/index', [StudentsController::class, 'index'])->name('teacher.student.index');
 
 
 
@@ -69,20 +69,18 @@ Route::delete('/courses/delete/{id}', [CourseController::class, 'destroy'])->nam
 
 
 
-// Student Routes
+
 Route::get('/students/create', [StudentController::class, 'create'])->name('admin.student.create');
 Route::get('/students/index', [StudentController::class, 'index'])->name('admin.student.index');
 Route::post('/students/store', [StudentController::class, 'store'])->name('admin.student.store');
 Route::get('/students/edit/{id?}', [StudentController::class, 'edit'])->name('admin.student.edit');
 Route::delete('/students/delete/{id}', [StudentController::class, 'destroy'])->name('student.delete');
-
 Route::put('/admin/student/update/{id}', [StudentController::class, 'update'])->name('admin.student.update');
 
 
 
 
 
-Route::get('/teacher/student/index', [StudentsController::class, 'index'])->name('teacher.student.index');
 
 
 
@@ -96,37 +94,43 @@ Route::delete('/admin/books/{book}', [BookController::class, 'destroy'])->name('
 
 
 Route::get('/teacher/zoom/zoomlinks', [StudentsController::class, 'zoomlink'])->name('teacher.zoom.zoomlinks');
-
-
-
 Route::post('/save-meet-link', [MeetLinkController::class, 'store'])->name('meet.link.store');
-
-
 Route::get('/meeting', [MeetingController::class, 'index'])->middleware('auth')->name('student.zoom.meeting');
 
 
 
 
 
+Route::prefix('admin/footer')->group(function () {
 
-
-
-// Show the history creation form
-Route::get('teacher/history/{id}/create', [HistoryController::class, 'create'])->name('teacher.history.create'); 
-Route::post('teacher/history/store', [HistoryController::class, 'store'])->name('teacher.history.store');
-
-Route::get('teacher/history/{id}', [HistoryController::class, 'index'])->name('teacher.history.index');
-
-Route::get('teacher/history/{id}/edit', [HistoryController::class, 'edit'])->name('teacher.history.edit');
-Route::put('teacher/history/{id}', [HistoryController::class, 'update'])->name('teacher.history.update');
-
-Route::delete('teacher/history/{id}', [HistoryController::class, 'destroy'])->name('teacher.history.destroy');
-
-Route::get('teacher/history/{id}/form/{historyId?}', [HistoryController::class, 'form'])->name('teacher.history.form');
+    Route::get('/', [FooterController::class, 'index'])->name('admin.footer.index');
+    Route::get('/create', [FooterController::class, 'create'])->name('admin.footer.create');
+    Route::post('/store', [FooterController::class, 'store'])->name('admin.footer.store');
+    Route::get('/edit/{footer}', [FooterController::class, 'edit'])->name('admin.footer.edit');
+    Route::put('/update/{footer}', [FooterController::class, 'update'])->name('admin.footer.update');
+    Route::delete('/delete/{footer}', [FooterController::class, 'destroy'])->name('admin.footer.delete');
+});
 
 
 
 
 
-Route::get('student/books/', [BookController::class, 'showbooks'])->name('student.books.index');
-Route::get('student/books/index', [HistoryController::class, 'showhistory'])->name('student.history.index');
+
+
+
+
+
+Route::prefix('admin/contactus')->group(function () {
+    
+    Route::get('/', [ContactController::class, 'index'])->name('admin.contactus.index');
+    Route::get('/create', [ContactController::class, 'create'])->name('admin.contactus.create');
+    Route::post('/store', [ContactController::class, 'store'])->name('admin.contactus.store');
+    Route::get('/edit/{contact}', [ContactController::class, 'edit'])->name('admin.contactus.edit');
+    Route::put('/update/{contact}', [ContactController::class, 'update'])->name('admin.contactus.update');
+    Route::delete('/delete/{contact}', [ContactController::class, 'destroy'])->name('admin.contactus.destroy');
+});
+
+
+
+
+
