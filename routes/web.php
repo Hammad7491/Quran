@@ -58,18 +58,18 @@ Route::put('/teacher/{id}/update', [TeacherController::class, 'update'])->name('
 
 
 
-Route::get('/courses/create', [CourseController::class, 'create'])->name('admin.courses.create'); 
-Route::get('/courses/index', [CourseController::class, 'index'])->name('admin.courses.index'); 
-Route::post('/courses/store', [CourseController::class, 'store'])->name('course.store'); 
-Route::get('/courses/edit/{id}', [CourseController::class, 'edit'])->name('course.edit'); 
-Route::put('/courses/update/{id}', [CourseController::class, 'update'])->name('course.update'); 
-Route::delete('/courses/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete'); 
+Route::get('/courses/create', [CourseController::class, 'create'])->name('admin.courses.create'); // List + Create/Edit Form
+Route::get('/courses/index', [CourseController::class, 'index'])->name('admin.courses.index'); // List + Create/Edit Form
+Route::post('/courses/store', [CourseController::class, 'store'])->name('course.store'); // Store New Course
+Route::get('/courses/edit/{id}', [CourseController::class, 'edit'])->name('course.edit'); // Edit Course
+Route::put('/courses/update/{id}', [CourseController::class, 'update'])->name('course.update'); // Update Course
+Route::delete('/courses/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete'); // Delete Course
 
 
 
 
 
-
+// Student Routes
 Route::get('/students/create', [StudentController::class, 'create'])->name('admin.student.create');
 Route::get('/students/index', [StudentController::class, 'index'])->name('admin.student.index');
 Route::post('/students/store', [StudentController::class, 'store'])->name('admin.student.store');
@@ -111,11 +111,7 @@ Route::get('/meeting', [MeetingController::class, 'index'])->middleware('auth')-
 
 
 
-<<<<<<< HEAD
-
-=======
 // Show the history creation form
->>>>>>> feature/saif
 Route::get('teacher/history/{id}/create', [HistoryController::class, 'create'])->name('teacher.history.create'); 
 Route::post('teacher/history/store', [HistoryController::class, 'store'])->name('teacher.history.store');
 
@@ -132,9 +128,5 @@ Route::get('teacher/history/{id}/form/{historyId?}', [HistoryController::class, 
 
 
 
-<<<<<<< HEAD
-Route::get('student/books/', [BookController::class, 'showbooks'])->name('student.books.index');
-=======
 Route::get('student/books', [BookController::class, 'showbooks'])->name('student.books.index');
->>>>>>> feature/saif
 Route::get('student/books/index', [HistoryController::class, 'showhistory'])->name('student.history.index');
