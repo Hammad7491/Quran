@@ -11,6 +11,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\MeetLinkController;
 use App\Http\Controllers\teacher\StudentsController;
+use App\Http\Controllers\FooterController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -58,12 +60,12 @@ Route::put('/teacher/{id}/update', [TeacherController::class, 'update'])->name('
 
 
 
-Route::get('/courses/create', [CourseController::class, 'create'])->name('admin.courses.create'); // List + Create/Edit Form
-Route::get('/courses/index', [CourseController::class, 'index'])->name('admin.courses.index'); // List + Create/Edit Form
-Route::post('/courses/store', [CourseController::class, 'store'])->name('course.store'); // Store New Course
-Route::get('/courses/edit/{id}', [CourseController::class, 'edit'])->name('course.edit'); // Edit Course
-Route::put('/courses/update/{id}', [CourseController::class, 'update'])->name('course.update'); // Update Course
-Route::delete('/courses/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete'); // Delete Course
+Route::get('/courses/create', [CourseController::class, 'create'])->name('admin.courses.create');
+Route::get('/courses/index', [CourseController::class, 'index'])->name('admin.courses.index');
+Route::post('/courses/store', [CourseController::class, 'store'])->name('course.store');
+Route::get('/courses/edit/{id}', [CourseController::class, 'edit'])->name('course.edit');
+Route::put('/courses/update/{id}', [CourseController::class, 'update'])->name('course.update');
+Route::delete('/courses/delete/{id}', [CourseController::class, 'destroy'])->name('course.delete');
 
 
 
@@ -123,6 +125,33 @@ Route::put('teacher/history/{id}', [HistoryController::class, 'update'])->name('
 Route::delete('teacher/history/{id}', [HistoryController::class, 'destroy'])->name('teacher.history.destroy');
 
 Route::get('teacher/history/{id}/form/{historyId?}', [HistoryController::class, 'form'])->name('teacher.history.form');
+Route::prefix('admin/footer')->group(function () {
+    Route::get('/', [FooterController::class, 'index'])->name('admin.footer.index');
+    Route::get('/create', [FooterController::class, 'create'])->name('admin.footer.create');
+    Route::post('/store', [FooterController::class, 'store'])->name('admin.footer.store');
+    Route::get('/edit/{footer}', [FooterController::class, 'edit'])->name('admin.footer.edit');
+    Route::put('/update/{footer}', [FooterController::class, 'update'])->name('admin.footer.update');
+    Route::delete('/delete/{footer}', [FooterController::class, 'destroy'])->name('admin.footer.delete');
+});
+
+
+
+
+
+
+
+
+
+
+Route::prefix('admin/contactus')->group(function () {
+  
+    Route::get('/', [ContactController::class, 'index'])->name('admin.contactus.index');
+    Route::get('/create', [ContactController::class, 'create'])->name('admin.contactus.create');
+    Route::post('/store', [ContactController::class, 'store'])->name('admin.contactus.store');
+    Route::get('/edit/{contact}', [ContactController::class, 'edit'])->name('admin.contactus.edit');
+    Route::put('/update/{contact}', [ContactController::class, 'update'])->name('admin.contactus.update');
+    Route::delete('/delete/{contact}', [ContactController::class, 'destroy'])->name('admin.contactus.destroy');
+});
 
 
 
