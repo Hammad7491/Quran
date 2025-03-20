@@ -111,7 +111,11 @@ Route::get('/meeting', [MeetingController::class, 'index'])->middleware('auth')-
 
 
 
+<<<<<<< HEAD
 
+=======
+// Show the history creation form
+>>>>>>> feature/saif
 Route::get('teacher/history/{id}/create', [HistoryController::class, 'create'])->name('teacher.history.create'); 
 Route::post('teacher/history/store', [HistoryController::class, 'store'])->name('teacher.history.store');
 
@@ -128,5 +132,9 @@ Route::get('teacher/history/{id}/form/{historyId?}', [HistoryController::class, 
 
 
 
+<<<<<<< HEAD
 Route::get('student/books/', [BookController::class, 'showbooks'])->name('student.books.index');
+=======
+Route::get('student/books', [BookController::class, 'showbooks'])->name('student.books.index');
+>>>>>>> feature/saif
 Route::get('student/books/index', [HistoryController::class, 'showhistory'])->name('student.history.index');
